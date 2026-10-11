@@ -1,0 +1,334 @@
+{
+  "audit": {
+    "frame_n": 1743,
+    "screened_n": 256,
+    "july_active_n": 120,
+    "archive_records": 68920,
+    "rejected_archive_rows": 6718,
+    "unique_games": 61479,
+    "focal_observations": 62181,
+    "deduplicated_eligible_rows": 723,
+    "archive_errors": [
+      "knvb_2020_10.json.gz"
+    ],
+    "pgn_rating_match_pct": 100.0,
+    "start": "2020-06-01 07:02:08+00:00",
+    "end": "2020-10-31 23:35:57+00:00"
+  },
+  "descriptive": [
+    {
+      "time_class": "blitz",
+      "observations": 41263,
+      "players": 115,
+      "mean_rating": 2651.603640064949,
+      "median_rating": 2663.0,
+      "sd_rating": 161.05642019039277,
+      "p10_rating": 2434.0,
+      "p90_rating": 2851.800000000003,
+      "mean_score": 0.5585391270629863
+    },
+    {
+      "time_class": "bullet",
+      "observations": 20189,
+      "players": 73,
+      "mean_rating": 2569.964337015206,
+      "median_rating": 2572.0,
+      "sd_rating": 143.55900649448273,
+      "p10_rating": 2406.0,
+      "p90_rating": 2737.0,
+      "mean_score": 0.5696418841943632
+    },
+    {
+      "time_class": "rapid",
+      "observations": 729,
+      "players": 61,
+      "mean_rating": 2364.5185185185187,
+      "median_rating": 2373.0,
+      "sd_rating": 238.76514393027304,
+      "p10_rating": 2071.8,
+      "p90_rating": 2673.0,
+      "mean_score": 0.6433470507544582
+    }
+  ],
+  "primary": {
+    "specification": "All blitz; balanced; >=3 games",
+    "estimate": 191.61658270933222,
+    "se": 43.96194260658573,
+    "ci_low": 99.60317935523078,
+    "ci_high": 283.62998606343365,
+    "pvalue": 0.0003380405507180704,
+    "n_cells": 485,
+    "n_players": 20,
+    "r_squared": 0.9321408051920855
+  },
+  "pretrend_p": 0.6022433472519266,
+  "paired_bootstrap": {
+    "n_players": 20,
+    "estimate": 183.641196956741,
+    "ci_low": 132.03435090844863,
+    "ci_high": 245.91799857593026
+  },
+  "composition": [
+    {
+      "pool": "bullet",
+      "pooled_game_weighted_change": 134.86038532371094,
+      "balanced_equal_player_change": 185.5421483064274,
+      "balanced_players": 39,
+      "pre_players": 66,
+      "post_players": 46
+    },
+    {
+      "pool": "blitz",
+      "pooled_game_weighted_change": 20.291539626909525,
+      "balanced_equal_player_change": 17.353655917146877,
+      "balanced_players": 90,
+      "pre_players": 115,
+      "post_players": 90
+    },
+    {
+      "pool": "rapid",
+      "pooled_game_weighted_change": 36.866163600643176,
+      "balanced_equal_player_change": 187.35148794605558,
+      "balanced_players": 14,
+      "pre_players": 52,
+      "post_players": 23
+    }
+  ],
+  "ten_minute": {
+    "unique_games": 114,
+    "class_counts": [
+      {
+        "time_class": "blitz",
+        "post": 0,
+        "n": 91
+      },
+      {
+        "time_class": "rapid",
+        "post": 1,
+        "n": 23
+      }
+    ]
+  },
+  "transitions": {
+    "n": 39,
+    "median_change": 151.0,
+    "mean_change": 154.94871794871796,
+    "median_days_after": 6.385625
+  },
+  "outcome": {
+    "n": 55783,
+    "pairs": 21949,
+    "gap100": 0.7243929678742935,
+    "post_interaction": 0.1451189916550559,
+    "post_interaction_p": 1.079000960027862e-05
+  },
+  "leakage_metrics": [
+    {
+      "rating_source": "postgame",
+      "n": 21674,
+      "accuracy": 0.6797084063855311,
+      "brier": 0.2133588238597,
+      "log_loss": 0.6166897016793843
+    },
+    {
+      "rating_source": "lagged_rematch",
+      "n": 21674,
+      "accuracy": 0.60007382116822,
+      "brier": 0.23362369143817185,
+      "log_loss": 0.6598330400408704
+    }
+  ],
+  "leakage_paired": {
+    "pairs": 6252,
+    "equal_pair_logloss_gain": 0.04426609294909949,
+    "ci_low": 0.04363200442937855,
+    "ci_high": 0.044953670637599905,
+    "median_update_white_win": 16.0,
+    "median_update_black_win": -16.0
+  },
+  "placebos": [
+    {
+      "specification": "Pre-period placebo: week -10",
+      "estimate": 17.46794517731807,
+      "se": 26.11754103626446,
+      "ci_low": -37.19669645357955,
+      "ci_high": 72.13258680821569,
+      "pvalue": 0.5116551521250221,
+      "n_cells": 337,
+      "n_players": 20,
+      "r_squared": 0.9583059130528051,
+      "cutoff": -10
+    },
+    {
+      "specification": "Pre-period placebo: week -8",
+      "estimate": -2.335805942641613,
+      "se": 22.716417618136937,
+      "ci_low": -49.88181444738692,
+      "ci_high": 45.210202562103696,
+      "pvalue": 0.9191797170706582,
+      "n_cells": 337,
+      "n_players": 20,
+      "r_squared": 0.9579592275274841,
+      "cutoff": -8
+    },
+    {
+      "specification": "Pre-period placebo: week -6",
+      "estimate": 1.984752227418744,
+      "se": 21.72785957117693,
+      "ci_low": -43.49218050586037,
+      "ci_high": 47.46168496069786,
+      "pvalue": 0.9281738901555512,
+      "n_cells": 337,
+      "n_players": 20,
+      "r_squared": 0.9579570320808077,
+      "cutoff": -6
+    },
+    {
+      "specification": "Pre-period placebo: week -4",
+      "estimate": 19.623705768490996,
+      "se": 20.193871813837877,
+      "ci_low": -22.642553689509622,
+      "ci_high": 61.88996522649161,
+      "pvalue": 0.34337696912251897,
+      "n_cells": 337,
+      "n_players": 20,
+      "r_squared": 0.9583041211748038,
+      "cutoff": -4
+    }
+  ],
+  "specifications": [
+    {
+      "specification": "All blitz; balanced; >=3 games",
+      "estimate": 191.61658270933222,
+      "se": 43.96194260658573,
+      "ci_low": 99.60317935523078,
+      "ci_high": 283.62998606343365,
+      "pvalue": 0.0003380405507180704,
+      "n_cells": 485,
+      "n_players": 20,
+      "r_squared": 0.9321408051920855
+    },
+    {
+      "specification": "Exclude 10|0; balanced; >=3 games",
+      "estimate": 191.60098566808213,
+      "se": 43.96200559025266,
+      "ci_low": 99.58745048765078,
+      "ci_high": 283.6145208485135,
+      "pvalue": 0.0003383184301293795,
+      "n_cells": 485,
+      "n_players": 20,
+      "r_squared": 0.9321425544421965
+    },
+    {
+      "specification": "3|0 only; balanced; >=3 games",
+      "estimate": 196.15970931390015,
+      "se": 47.639312459291105,
+      "ci_low": 95.64954577001902,
+      "ci_high": 296.6698728577813,
+      "pvalue": 0.0007188301765502208,
+      "n_cells": 421,
+      "n_players": 18,
+      "r_squared": 0.922842744289787
+    },
+    {
+      "specification": "All blitz; unbalanced; >=3 games",
+      "estimate": 165.74056772185526,
+      "se": 32.03609283720571,
+      "ci_low": 102.27731455411123,
+      "ci_high": 229.20382088959929,
+      "pvalue": 9.943445403371976e-07,
+      "n_cells": 1547,
+      "n_players": 115,
+      "r_squared": 0.9307972029826229
+    },
+    {
+      "specification": "All blitz; balanced; >=1 game",
+      "estimate": 163.6895230919933,
+      "se": 29.74731580968582,
+      "ci_low": 102.9373993649776,
+      "ci_high": 224.441646819009,
+      "pvalue": 5.6360640869352875e-06,
+      "n_cells": 780,
+      "n_players": 31,
+      "r_squared": 0.9345310551455972
+    },
+    {
+      "specification": "All blitz; balanced; +/-6 weeks",
+      "estimate": 203.9812127325806,
+      "se": 45.56814193282986,
+      "ci_low": 104.69676046523367,
+      "ci_high": 303.2656649999275,
+      "pvalue": 0.0007571592678139045,
+      "n_cells": 197,
+      "n_players": 13,
+      "r_squared": 0.9323303011038595
+    },
+    {
+      "specification": "All blitz; differential linear trend",
+      "estimate": 185.12733513984327,
+      "se": 32.42196388987352,
+      "ci_low": 117.26738482718042,
+      "ci_high": 252.98728545250611,
+      "pvalue": 1.6707075901328995e-05,
+      "n_cells": 485,
+      "n_players": 20,
+      "r_squared": 0.9321611747068291
+    },
+    {
+      "specification": "All blitz; game-count weighted",
+      "estimate": 261.09824413402885,
+      "se": 70.66904534719541,
+      "ci_low": 113.1862323202773,
+      "ci_high": 409.01025594778037,
+      "pvalue": 0.0015383482015244722,
+      "n_cells": 485,
+      "n_players": 20,
+      "r_squared": 0.8967457379248505
+    },
+    {
+      "specification": "Common players: all blitz",
+      "estimate": 197.2327084593896,
+      "se": 46.2299722086137,
+      "ci_low": 99.69599293085517,
+      "ci_high": 294.76942398792403,
+      "pvalue": 0.0005214358394975283,
+      "n_cells": 449,
+      "n_players": 18,
+      "r_squared": 0.930158249566497
+    },
+    {
+      "specification": "Common players: 3|0 only",
+      "estimate": 196.15970931390015,
+      "se": 47.639312459291105,
+      "ci_low": 95.64954577001902,
+      "ci_high": 296.6698728577813,
+      "pvalue": 0.0007188301765502208,
+      "n_cells": 421,
+      "n_players": 18,
+      "r_squared": 0.922842744289787
+    }
+  ],
+  "unique_game_descriptive": [
+    {
+      "time_class": "blitz",
+      "n": 40684,
+      "draw_rate": 0.10286599154458756,
+      "white_score": 0.5245673975027038,
+      "moves_median": 40.0
+    },
+    {
+      "time_class": "bullet",
+      "n": 20079,
+      "draw_rate": 0.0664873748692664,
+      "white_score": 0.5189252452811395,
+      "moves_median": 41.0
+    },
+    {
+      "time_class": "rapid",
+      "n": 716,
+      "draw_rate": 0.24581005586592178,
+      "white_score": 0.5502793296089385,
+      "moves_median": 40.0
+    }
+  ]
+}

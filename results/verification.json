@@ -1,0 +1,119 @@
+{
+  "checks": [
+    {
+      "check": "All reported numeric results finite",
+      "passed": true,
+      "detail": "No NaN or infinity in summary.json"
+    },
+    {
+      "check": "Unique game IDs",
+      "passed": true,
+      "detail": 61479
+    },
+    {
+      "check": "Valid results",
+      "passed": true,
+      "detail": [
+        0.0,
+        0.5,
+        1.0
+      ]
+    },
+    {
+      "check": "Valid speed pools",
+      "passed": true,
+      "detail": [
+        "blitz",
+        "bullet",
+        "rapid"
+      ]
+    },
+    {
+      "check": "Focal game references valid",
+      "passed": true,
+      "detail": 62181
+    },
+    {
+      "check": "One or two focal records per game",
+      "passed": true,
+      "detail": "Unique per sampled participant"
+    },
+    {
+      "check": "Focal account-game IDs unique",
+      "passed": true,
+      "detail": "No participant duplication"
+    },
+    {
+      "check": "PGN and JSON ratings agree",
+      "passed": true,
+      "detail": "Matches documented post-game values"
+    },
+    {
+      "check": "Primary panel supports treatment contrast",
+      "passed": true,
+      "detail": {
+        "players": 20,
+        "cells": 485
+      }
+    },
+    {
+      "check": "Primary participants observed in both pools and periods",
+      "passed": true,
+      "detail": 20
+    },
+    {
+      "check": "Primary fixed-effects design full rank",
+      "passed": true,
+      "detail": {
+        "columns": 62,
+        "rank": 62
+      }
+    },
+    {
+      "check": "Nonempty adjacent rematch audit",
+      "passed": true,
+      "detail": {
+        "games": 21674,
+        "pairs": 6252
+      }
+    },
+    {
+      "check": "Prior-game information predates game start",
+      "passed": true,
+      "detail": "Maximum start gap 300 seconds"
+    },
+    {
+      "check": "Prior rematch is latest observed for both",
+      "passed": true,
+      "detail": "Checks observed histories, not unseen opponent games"
+    },
+    {
+      "check": "Frozen successful-response hashes match",
+      "passed": true,
+      "detail": {
+        "checked": 736,
+        "unavailable_archives": 1
+      }
+    },
+    {
+      "check": "All publication figures exist",
+      "passed": true,
+      "detail": "13 vector PDF and 13 matching PNG files"
+    },
+    {
+      "check": "All raster previews exist",
+      "passed": true,
+      "detail": 13
+    },
+    {
+      "check": "Summary counts match processed data",
+      "passed": true,
+      "detail": {
+        "unique_games": 61479,
+        "focal_rows": 62181
+      }
+    }
+  ],
+  "all_passed": true,
+  "scope": "Integrity, observed-history timing, design rank; does not establish causal identification."
+}
