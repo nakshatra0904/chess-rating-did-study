@@ -25,7 +25,7 @@
 {\sffamily\Large A difference-in-differences study of control-group sensitivity, participation, and post-game measurement around Chess.com's September 2020 reform\par}
 \vspace{1cm}
 {\large Research and analysis by nakshatra0904\par}
-{\large Prepared 11 October 2026\par}
+{\large R edition revised 12 October 2026\par}
 \vfill
 \rule{\textwidth}{.7pt}
 \vspace{.3cm}
@@ -47,7 +47,7 @@ I analyze 61,479 unique rated standard-chess games and 62,181 focal player-game 
 
 My primary two-way fixed-effects difference-in-differences (DiD) regression estimates a bullet-versus-blitz shift of \textbf{191.6 rating points}, with an exploratory player-clustered 95\% interval of [99.6, 283.6]. The estimation sample has 20 players and 485 observed player-pool-week cells. This conditional contrast is a cohort-specific estimate; the policy was one platform-wide event, so its uncertainty is not fully captured by treating players as independent policy replications.
 
-A simpler matched-player calculation gives 183.6 points, with a player-resampling percentile interval of [132.0, 245.9]. The difference from the fixed-effects estimate reflects aggregation and weighting. Both estimates should be compared with the announced 150-point administrative offset, not interpreted as a gain of the same amount in latent ability.
+A simpler matched-player calculation gives 183.6 points, with a player-resampling percentile interval of [132.1, 245.1]. The difference from the fixed-effects estimate reflects aggregation and weighting. Both estimates should be compared with the announced 150-point administrative offset, not interpreted as a gain of the same amount in latent ability.
 
 The joint test of the five nearest pre-event contrasts has p = 0.602. This diagnostic does not establish parallel trends: pre-tests may have limited power, and multiple co-occurring reforms threaten the comparison even when a pre-test does not reject. I therefore estimate several control definitions, common-player comparisons, pre-period placebos, and a differential-trend sensitivity model.
 
@@ -163,7 +163,7 @@ rapid & 729 & 61 & 2,364.5 & 2,373.0 & 238.8 & 2,071.8 & 2,673.0 \\
 
 These are game-weighted statistics: a frequent player contributes more observations. The distribution describes this selected cohort's activity, not platform-wide percentiles. Standard deviation describes observed dispersion and is not a standard error. Game outcomes, repeated opponents, and account activity induce dependence that is addressed in model uncertainty only to the extent described below.
 
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/02_distributions.pdf}\caption{Focal post-game rating distributions before and on/after 10 September 2020. Histograms are normalized within pool-period. Source: frozen Chess.com cohort archives, June--October 2020.}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/02_distributions.pdf}\caption{Focal post-game rating distributions before and on/after 10 September 2020. Frequency polygons use 100-point bins and are normalized within pool-period. Source: frozen Chess.com cohort archives, June--October 2020.}\end{figure}
 
 \section{Difference-in-differences design and assumptions}
 
@@ -181,7 +181,7 @@ The coefficient compares the change in bullet with the contemporaneous change in
 
 \subsection{Uncertainty and diagnostic tests}
 
-I calculate regression intervals with the statsmodels cluster-robust covariance, clustering by account and using a Student-$t$ reference with the cluster degrees-of-freedom correction \cite{statsmodels}. I additionally bootstrap entire player contrasts 10,000 times using seed 20201011. This retains within-player dependence, but is a different aggregate estimand from the fixed-effects coefficient. Bootstrap intervals use percentiles, not a claim of exact small-sample coverage.
+I calculate regression intervals with the R cluster-robust sandwich covariance, clustering by account and using a Student-$t$ reference with the cluster degrees-of-freedom correction \cite{rstats,zeileis}. I additionally bootstrap entire player contrasts 10,000 times using seed 20201011 and R's Mersenne-Twister generator. The resampling intervals are recomputed in R; identical integer seeds need not produce identical draws across software implementations. This retains within-player dependence, but is a different aggregate estimand from the fixed-effects coefficient. Bootstrap intervals use percentiles, not a claim of exact small-sample coverage.
 
 Many games do not imply many independent policy changes. Players share opponents, pool dynamics, and a single announcement. Account clustering does not capture every cross-player shock. The econometric literature documents sensitivity to serial correlation and to having few policy changes \cite{bertrand,conley}. Reported intervals are useful cohort-level diagnostics and do not establish the uncertainty of a counterfactual platform-wide reform effect.
 
@@ -259,7 +259,7 @@ Placebo event week & Estimate & 95\% interval & p-value \\ \midrule
 
 \begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/06_player_changes.pdf}\caption{Each point is a matched account: equal-week post-minus-pre bullet and blitz changes. The right panel shows their differences; the 150-point line is an announced-offset benchmark. Source: the primary panel.}\end{figure}
 
-The matched-player bootstrap estimate is 183.6 points, with interval [132.0, 245.9]. The player distribution makes heterogeneity visible. Accounts with large changes should not be labeled as unusually improved or as suspicious: the measure includes estimation noise, elapsed time, ordinary results, and selection into play.
+The matched-player bootstrap estimate is 183.6 points, with interval [132.1, 245.1]. The player distribution makes heterogeneity visible. Accounts with large changes should not be labeled as unusually improved or as suspicious: the measure includes estimation noise, elapsed time, ordinary results, and selection into play.
 
 \section{Participation, reclassification and the comparator problem}
 
@@ -299,7 +299,7 @@ The honest causal conclusion is thus bounded. The panel can measure a bullet-rel
 
 There are 39 accounts with an observed bullet rating on both sides of the announcement for which the first post-event game crosses the date from the prior observed bullet game. The median observed change is 151.0 points; the mean is 154.9. The median first-observation delay is 6.4 days.
 
-\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/08_rollout.pdf}\caption{First observed post-announcement bullet game minus the previous observed bullet rating. Scatter shading encodes current score (dark = loss, middle = draw, light = win); the offset line is 150. These changes include game updates and elapsed-time effects. Source: frozen cohort archives.}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\textwidth]{figures/08_rollout.pdf}\caption{First observed post-announcement bullet game minus the previous observed bullet rating. Scatter color encodes current score (0 = loss, 0.5 = draw, 1 = win); the offset line is 150. These changes include game updates and elapsed-time effects. Source: frozen cohort archives.}\end{figure}
 
 The crossing statistic is not a clean measure of the administrative addition. It includes the result of the first post-event game, possibly multiple intervening rating adjustments, and delayed observation. A player can log in before playing, so first post-game observation is not the login time. The distribution is useful for consistency checks, and should not be converted into a staggered-adoption causal design without genuine treatment timestamps.
 
@@ -321,13 +321,13 @@ I fit the model using 55,783 decisive games from 21,949 observed opponent pairs.
 
 Term & Coefficient & SE & 95\% interval \\ \midrule
 
-Intercept & 0.123 & 0.013 & 0.098 to 0.148 \\
-
-C(time\_class)[T.bullet] & -0.018 & 0.021 & -0.059 to 0.023 \\
-
-C(time\_class)[T.rapid] & 0.045 & 0.112 & -0.174 to 0.264 \\
+(Intercept) & 0.123 & 0.013 & 0.098 to 0.148 \\
 
 gap100 & 0.724 & 0.020 & 0.686 to 0.763 \\
+
+factor(time\_class)bullet & -0.018 & 0.021 & -0.059 to 0.023 \\
+
+factor(time\_class)rapid & 0.045 & 0.112 & -0.174 to 0.264 \\
 
 post & -0.026 & 0.020 & -0.066 to 0.013 \\
 
@@ -399,7 +399,7 @@ Three specific follow-ups are promising. First, estimate how incomplete opponent
 
 I provide a complete reproducible project containing frozen compressed API responses, processed datasets, request and hash logs, collection and analysis code, all generated figures in PDF and PNG, numerical result tables, this report's LaTeX source, the compiled PDF, dependency pins, verification utilities, and a README. Rebuilding analysis from the frozen data requires no Chess.com credentials and no fresh data download. Re-fetching is optional and can change the contemporary sampling frame.
 
-From the repository root, create a Python environment, install \texttt{requirements.txt}, run \texttt{python scripts/analyze.py}, then run \texttt{python scripts/build\_report.py}. Compile from the report folder using \texttt{tectonic report.tex}; an ordinary XeLaTeX installation can also compile the source twice. The delivered report is actually typeset from LaTeX, with vector figure inputs. The self-contained compiler used for delivery was Tectonic 0.17.0; portable Palatino, Helvetica, and Courier TeX fonts avoid dependence on installed desktop fonts.
+From the repository root, restore the pinned R packages with \texttt{Rscript scripts/setup.R}, run \texttt{Rscript scripts/analyze.R}, then run \texttt{Rscript scripts/verify.R} and \texttt{Rscript scripts/build\_report.R}. Compile from the report folder using \texttt{tectonic report.tex}; an ordinary XeLaTeX installation can also compile the source twice. The delivered report is actually typeset from LaTeX, with vector figure inputs. The self-contained compiler used for delivery was Tectonic 0.17.0; portable Palatino, Helvetica, and Courier TeX fonts avoid dependence on installed desktop fonts.
 
 I release my original code and report text under an MIT license. Public platform data are attributed separately and are not relicensed by the code license. The source archives include public game handles and URLs for provenance; no private chats, emails, or authentication tokens were collected. The repository contains the source files, frozen data, estimates, figures and compiled report needed to inspect and reproduce my analysis.
 
@@ -455,6 +455,8 @@ I consulted the web sources on 11 October 2026. Policy and endpoint semantics re
 \bibitem{bertrand} Bertrand, M., Duflo, E., and Mullainathan, S. (2004). How Much Should We Trust Differences-in-Differences Estimates? \emph{Quarterly Journal of Economics}, 119(1), 249--275. Working-paper record: \url{https://www.nber.org/papers/w8841}.
 \bibitem{conley} Conley, T. and Taber, C. (2005). \emph{Inference with Difference in Differences with a Small Number of Policy Changes}. NBER Technical Working Paper 312. \url{https://www.nber.org/papers/t0312}.
 \bibitem{roth} Roth, J. (2022). Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends. \emph{American Economic Review: Insights}, 4(3), 305--322. Author manuscript: \url{https://www.jonathandroth.com/assets/files/roth_pretrends_testing.pdf}.
-\bibitem{statsmodels} statsmodels. \emph{Linear regression and robust covariance documentation}. \url{https://www.statsmodels.org/stable/_modules/statsmodels/regression/linear_model.html}.
+\bibitem{rstats} R Core Team. \emph{R: A Language and Environment for Statistical Computing}. \url{https://www.r-project.org/}.
+\bibitem{zeileis} Zeileis, A. \emph{Econometric Computing with HC and HAC Covariance Matrix Estimators}. Technical vignette. \url{https://cran.r-project.org/web/packages/sandwich/vignettes/sandwich.pdf}.
 \end{thebibliography}
 \end{document}
+

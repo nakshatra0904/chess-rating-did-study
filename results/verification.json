@@ -1,7 +1,7 @@
 {
   "checks": [
     {
-      "check": "All reported numeric results finite",
+      "check": "Reported numeric results are finite",
       "passed": true,
       "detail": "No NaN or infinity in summary.json"
     },
@@ -14,9 +14,9 @@
       "check": "Valid results",
       "passed": true,
       "detail": [
-        0.0,
+        0,
         0.5,
-        1.0
+        1
       ]
     },
     {
@@ -29,14 +29,14 @@
       ]
     },
     {
-      "check": "Focal game references valid",
+      "check": "Focal references valid",
       "passed": true,
       "detail": 62181
     },
     {
       "check": "One or two focal records per game",
       "passed": true,
-      "detail": "Unique per sampled participant"
+      "detail": "One row per sampled participant"
     },
     {
       "check": "Focal account-game IDs unique",
@@ -49,7 +49,7 @@
       "detail": "Matches documented post-game values"
     },
     {
-      "check": "Primary panel supports treatment contrast",
+      "check": "Primary panel supports contrast",
       "passed": true,
       "detail": {
         "players": 20,
@@ -57,12 +57,12 @@
       }
     },
     {
-      "check": "Primary participants observed in both pools and periods",
+      "check": "Participants observed in both pools and periods",
       "passed": true,
       "detail": 20
     },
     {
-      "check": "Primary fixed-effects design full rank",
+      "check": "Primary design has full rank",
       "passed": true,
       "detail": {
         "columns": 62,
@@ -70,7 +70,45 @@
       }
     },
     {
-      "check": "Nonempty adjacent rematch audit",
+      "check": "Saved DiD coefficient and interval reproduce",
+      "passed": true,
+      "detail": "Independent refit of saved primary panel"
+    },
+    {
+      "check": "Primary regression matches validated reference",
+      "passed": true,
+      "detail": {
+        "max_absolute_difference": 2.67164068645798e-12
+      }
+    },
+    {
+      "check": "All sensitivity regressions match reference",
+      "passed": true,
+      "detail": {
+        "specifications": 10,
+        "max_absolute_difference": 2.21120899368543e-11
+      }
+    },
+    {
+      "check": "Joint pretrend test matches reference",
+      "passed": true,
+      "detail": 0.602243347252094
+    },
+    {
+      "check": "Outcome regression matches reference",
+      "passed": true,
+      "detail": {
+        "decisive_games": 55783,
+        "pairs": 21949
+      }
+    },
+    {
+      "check": "Raw reconstruction matches reference counts",
+      "passed": true,
+      "detail": "Same games, exclusions and focal observations"
+    },
+    {
+      "check": "Rematch audit nonempty",
       "passed": true,
       "detail": {
         "games": 21674,
@@ -78,17 +116,17 @@
       }
     },
     {
-      "check": "Prior-game information predates game start",
+      "check": "Prior information predates game start",
       "passed": true,
       "detail": "Maximum start gap 300 seconds"
     },
     {
       "check": "Prior rematch is latest observed for both",
       "passed": true,
-      "detail": "Checks observed histories, not unseen opponent games"
+      "detail": "Checks observed histories, not unseen games"
     },
     {
-      "check": "Frozen successful-response hashes match",
+      "check": "Frozen response hashes match",
       "passed": true,
       "detail": {
         "checked": 736,
@@ -98,7 +136,7 @@
     {
       "check": "All publication figures exist",
       "passed": true,
-      "detail": "13 vector PDF and 13 matching PNG files"
+      "detail": "13 vector PDF figures"
     },
     {
       "check": "All raster previews exist",
@@ -106,7 +144,7 @@
       "detail": 13
     },
     {
-      "check": "Summary counts match processed data",
+      "check": "Summary counts match data",
       "passed": true,
       "detail": {
         "unique_games": 61479,
@@ -115,5 +153,5 @@
     }
   ],
   "all_passed": true,
-  "scope": "Integrity, observed-history timing, design rank; does not establish causal identification."
+  "scope": "Integrity, observed-history timing, design rank and saved-result reproduction; does not establish causal identification."
 }

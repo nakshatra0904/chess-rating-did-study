@@ -1,0 +1,13 @@
+Package: ChessRatingDiD
+Type: Project
+Title: My Difference-in-Differences Study of Chess Rating Reform
+Version: 2.0.0
+Authors@R: person("nakshatra0904", role = "aut")
+Description: Reproducible public-data collection, descriptive statistics,
+    fixed-effects difference-in-differences, event studies, placebo checks,
+    outcome regressions, measurement audits, and a compiled LaTeX report.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.5.1)
+Imports: data.table, jsonlite, digest, curl, ggplot2
+Suggests: renv

@@ -1,0 +1,28 @@
+---
+title: "My chess rating-policy analysis: DiD and measurement"
+author: "nakshatra0904"
+output: html_document
+---
+
+I use this optional notebook to explore the frozen outputs. The complete
+reproduction pipeline is in the R scripts; rendering this notebook is optional
+and requires `rmarkdown` and `knitr` in addition to the core dependencies.
+
+```{r}
+root <- if (basename(getwd()) == "notebooks") dirname(getwd()) else getwd()
+.libPaths(c(file.path(root, ".R-library"), .libPaths()))
+summary <- jsonlite::fromJSON(file.path(root, "results", "summary.json"))
+summary$audit
+```
+
+```{r}
+read.csv(file.path(root, "results", "did_specifications.csv"))
+read.csv(file.path(root, "results", "rematch_leakage_metrics.csv"))
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics(file.path(root, "report", "figures", "04_did_sensitivity.png"))
+```
+
+I interpret these comparisons as measured rating changes. Their causal interpretation
+depends on untreated parallel trends, comparator spillovers, and stable observation.
